@@ -22,10 +22,16 @@ def get_api_call(url, cookies):
 
 # creates csv file if not already created
 def create_csv_file():
-  with open('cod_match_stats.csv', 'a') as f:
-    f.write('MatchID,Date,StartTime,EndTime,Map,Mode,Kills,KD_Ratio,Accuracy,Damage,Points\n')
+    try:
+        with open('cod_match_stats.csv', 'r+') as f:
+            header = f.readline()
+            if header != 'MatchID,Date,StartTime,EndTime,Map,Mode,Kills,KD_Ratio,Accuracy,Damage,Points\n':
+                f.write('MatchID,Date,StartTime,EndTime,Map,Mode,Kills,KD_Ratio,Accuracy,Damage,Points\n')
     
-  f.close()
+        f.close()
+    except FileNotFoundError:
+        file = open('cod_match_stats.csv', 'w')
+        file.close
 
 # finds and returns the most recent entry date in csv file
 def find_most_recent_date(filename = '/cod_match_stats.csv'):
