@@ -16,6 +16,9 @@ response = functions.get_api_call(url, cookies)
 # gets the match data of the last 50 matches
 match_data = response.json()['data']['matches'][0:50]
 
+# creates csv file and header if not already created
+functions.create_csv_file()
+
 # get the most recent match date in csv file
 recent_date = functions.find_most_recent_date()
 
