@@ -31,7 +31,7 @@ def create_csv_file():
         f.close()
     except FileNotFoundError:
         file = open('cod_match_stats.csv', 'w')
-        file.close
+        file.close()
 
 # finds and returns the most recent entry date in csv file
 def find_most_recent_date(filename = '/cod_match_stats.csv'):
